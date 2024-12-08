@@ -7,10 +7,10 @@ on:
 
 jobs:
   daily-commit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # 明示的にバージョンを指定
 
     env:
-      TOKEN_FOR_PUSH: ${{ vars.TOKEN_FOR_PUSH }}
+      MY_VARIABLE_TOKEN: ${{ secrets.TOKEN_FOR_PUSH }}
 
     steps:
     - name: Checkout repo
@@ -26,5 +26,5 @@ jobs:
 
     - name: Push changes
       run: |
-        git remote set-url origin https://x-access-token:${TOKEN_FOR_PUSH}@github.com/${{ github.repository }}.git
+        git remote set-url origin https://x-access-token:${MY_VARIABLE_TOKEN}@github.com/${{ github.repository }}.git
         git push origin main
