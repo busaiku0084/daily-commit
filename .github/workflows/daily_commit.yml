@@ -15,6 +15,9 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.MY_VARIABLE_TOKEN }}
+        repository: ${{ github.repository }}
 
     - name: Make a commit
       run: |
@@ -26,6 +29,4 @@ jobs:
 
     - name: Push changes
       run: |
-        git remote set-url origin https://x-access-token:${MY_VARIABLE_TOKEN}@github.com/${{ github.repository }}.git
-        git pull origin main --rebase  # リモートの変更をリベースして取り込む
-        git push origin main
+        git push origin main  # 通常通り、pushを行う
