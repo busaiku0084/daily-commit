@@ -2,7 +2,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '0 16 * * *'  # 毎日16時に実行 (UTC) -> 日本時間1時 (JST)
+    - cron: '0 3 * * *'  # 毎日3時に実行 (UTC) -> 日本時間12時 (JST)
   workflow_dispatch:  # 手動トリガー
 
 jobs:
