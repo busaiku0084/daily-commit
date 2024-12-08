@@ -3,6 +3,7 @@ name: Daily Commit
 on:
   schedule:
     - cron: '0 1 * * *'  # 毎日1時に実行 (UTC)
+  workflow_dispatch:  # 手動トリガーの追加
 
 jobs:
   daily-commit:
