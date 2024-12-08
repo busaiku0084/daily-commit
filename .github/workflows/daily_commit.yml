@@ -23,7 +23,7 @@ jobs:
 
     - name: Make a commit
       run: |
-        echo -e "Auto commit on $(date)" >> README.md
+        echo -e "Auto commit on $(date)<br/>" >> README.md
         git config user.name "${{ env.COMMIT_USER_NAME }}"
         git config user.email "${{ env.COMMIT_USER_EMAIL }}"
         git add README.md
