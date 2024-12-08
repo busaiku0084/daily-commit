@@ -2,7 +2,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # 毎日3時に実行 (UTC) -> 日本時間12時 (JST)
+    - cron: '0 23 * * *'  # 毎日23時に実行 (UTC) -> 日本時間8時 (JST)
   workflow_dispatch:  # 手動トリガー
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
 
     - name: Make a commit
       run: |
-        echo -e "Auto commit on $(date)<br/>" >> README.md
+        echo -e "Auto commit on $(TZ='Asia/Tokyo' date)<br/>" >> README.md
         git config user.name "${{ env.COMMIT_USER_NAME }}"
         git config user.email "${{ env.COMMIT_USER_EMAIL }}"
         git add README.md
