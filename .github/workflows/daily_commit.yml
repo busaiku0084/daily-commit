@@ -3,30 +3,32 @@ name: Daily Commit
 on:
   schedule:
     - cron: '0 1 * * *'  # 毎日1時に実行 (UTC)
-  workflow_dispatch:  # 手動トリガーの追加
+  workflow_dispatch:  # 手動トリガー
 
 jobs:
   daily-commit:
     runs-on: ubuntu-22.04  # 明示的にバージョンを指定
 
     env:
-      MY_VARIABLE_TOKEN: ${{ secrets.MY_VARIABLE_TOKEN }}  # Personal Access Token
+      PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      COMMIT_USER_NAME: ${{ vars.COMMIT_USER_NAME }}
+      COMMIT_USER_EMAIL: ${{ vars.COMMIT_USER_EMAIL }}
 
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
       with:
-        token: ${{ secrets.MY_VARIABLE_TOKEN }}
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         repository: ${{ github.repository }}
 
     - name: Make a commit
       run: |
-        echo "Auto commit on $(date)" >> README.md
-        git config user.name "busaiku0084"
-        git config user.email "cssy18023@icloud.com"
+        echo -e "\nAuto commit on $(date)" >> README.md
+        git config user.name "${{ env.COMMIT_USER_NAME }}"
+        git config user.email "${{ env.COMMIT_USER_EMAIL }}"
         git add README.md
         git commit -m "Auto commit on $(date)" || echo "No changes to commit"
 
     - name: Push changes
       run: |
-        git push origin main  # 通常通り、pushを行う
+        git push origin main
