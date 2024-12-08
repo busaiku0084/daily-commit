@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04  # 明示的にバージョンを指定
 
     env:
-      MY_VARIABLE_TOKEN: ${{ secrets.TOKEN_FOR_PUSH }}
+      MY_VARIABLE_TOKEN: ${{ secrets.MY_VARIABLE_TOKEN }}  # Personal Access Token
 
     steps:
     - name: Checkout repo
@@ -27,4 +27,5 @@ jobs:
     - name: Push changes
       run: |
         git remote set-url origin https://x-access-token:${MY_VARIABLE_TOKEN}@github.com/${{ github.repository }}.git
+        git pull origin main --rebase  # リモートの変更をリベースして取り込む
         git push origin main
