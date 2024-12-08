@@ -1,0 +1,29 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 毎日1時に実行 (UTC)
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+
+    env:
+      TOKEN_FOR_PUSH: ${{ vars.TOKEN_FOR_PUSH }}
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Make a commit
+      run: |
+        echo "Auto commit on $(date)" >> README.md
+        git config user.name "busaiku0084"
+        git config user.email "cssy18023@icloud.com"
+        git add README.md
+        git commit -m "Auto commit on $(date)" || echo "No changes to commit"
+
+    - name: Push changes
+      run: |
+        git remote set-url origin https://x-access-token:${TOKEN_FOR_PUSH}@github.com/${{ github.repository }}.git
+        git push origin main
