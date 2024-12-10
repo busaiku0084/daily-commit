@@ -21,13 +21,23 @@ jobs:
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         repository: ${{ github.repository }}
 
-    - name: Make a commit
+    - name: Update README.md
       run: |
-        echo -e "Auto commit on $(TZ='Asia/Tokyo' date)<br/>" >> README.md
+        echo "Last updated on $(TZ='Asia/Tokyo' date)" >> README.md
+
+    - name: Configure git
+      run: |
         git config user.name "${{ env.COMMIT_USER_NAME }}"
         git config user.email "${{ env.COMMIT_USER_EMAIL }}"
+
+    - name: Commit changes
+      run: |
         git add README.md
         git commit -m "Auto commit on $(date)" || echo "No changes to commit"
+
+    - name: Pull latest changes and rebase
+      run: |
+        git pull --rebase origin main
 
     - name: Push changes
       run: |
