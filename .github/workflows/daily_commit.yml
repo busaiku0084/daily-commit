@@ -23,7 +23,7 @@ jobs:
 
     - name: Update README.md
       run: |
-        echo "Last updated on $(TZ='Asia/Tokyo' date)" >> README.md
+        echo "Auto commit on $(TZ='Asia/Tokyo' date)<br/>" >> README.md
 
     - name: Configure git
       run: |
