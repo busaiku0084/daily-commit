@@ -21,9 +21,9 @@ jobs:
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         repository: ${{ github.repository }}
 
-    - name: Update README.md
+    - name: Append log to commit-log.txt
       run: |
-        echo "Auto commit on $(TZ='Asia/Tokyo' date)<br/>" >> README.md
+        echo "Auto commit on $(TZ='Asia/Tokyo' date)" >> commit-log.txt
 
     - name: Configure git
       run: |
@@ -32,7 +32,7 @@ jobs:
 
     - name: Commit changes
       run: |
-        git add README.md
+        git add commit-log.txt
         git commit -m "Auto commit on $(date)" || echo "No changes to commit"
 
     - name: Pull latest changes and rebase
