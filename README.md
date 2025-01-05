@@ -1,31 +1,30 @@
 # daily-commit
 
-Auto commit on Sun Dec  8 14:41:41 UTC 2024<br/>
-Auto commit on Mon Dec  9 08:17:27 JST 2024<br/>
-Auto commit on Tue Dec 10 08:18:56 JST 2024<br/>
-Auto commit on Wed Dec 11 08:18:30 JST 2024<br/>
-Auto commit on Thu Dec 12 08:18:33 JST 2024<br/>
-Auto commit on Fri Dec 13 08:19:07 JST 2024<br/>
-Auto commit on Sat Dec 14 08:18:23 JST 2024<br/>
-Auto commit on Sun Dec 15 08:17:29 JST 2024<br/>
-Auto commit on Mon Dec 16 08:18:20 JST 2024<br/>
-Auto commit on Tue Dec 17 08:18:38 JST 2024<br/>
-Auto commit on Wed Dec 18 08:17:41 JST 2024<br/>
-Auto commit on Thu Dec 19 08:17:46 JST 2024<br/>
-Auto commit on Fri Dec 20 08:17:08 JST 2024<br/>
-Auto commit on Sat Dec 21 08:16:46 JST 2024<br/>
-Auto commit on Sun Dec 22 08:16:03 JST 2024<br/>
-Auto commit on Mon Dec 23 08:17:52 JST 2024<br/>
-Auto commit on Tue Dec 24 08:16:51 JST 2024<br/>
-Auto commit on Wed Dec 25 08:16:35 JST 2024<br/>
-Auto commit on Thu Dec 26 08:16:50 JST 2024<br/>
-Auto commit on Fri Dec 27 08:16:54 JST 2024<br/>
-Auto commit on Sat Dec 28 08:16:43 JST 2024<br/>
-Auto commit on Sun Dec 29 08:17:19 JST 2024<br/>
-Auto commit on Mon Dec 30 08:16:12 JST 2024<br/>
-Auto commit on Tue Dec 31 08:16:52 JST 2024<br/>
-Auto commit on Wed Jan  1 08:16:25 JST 2025<br/>
-Auto commit on Thu Jan  2 08:16:53 JST 2025<br/>
-Auto commit on Fri Jan  3 08:17:07 JST 2025<br/>
-Auto commit on Sat Jan  4 08:17:18 JST 2025<br/>
-Auto commit on Sun Jan  5 08:16:56 JST 2025<br/>
+このリポジトリは、GitHub Actionsを利用して毎日自動的にコミットを行う仕組みを提供します。
+
+## 仕組み
+
+- **GitHub Actions**を使用して、指定した時間にスケジュールされたタスクを実行します。
+- 日付と時刻を含むログを`commit-log.txt`に記録します。
+- 毎回のログは日本時間（JST）で記録されます。
+
+## 使用方法
+
+1. **リポジトリのクローン**:
+  ```bash
+  git clone https://github.com/busaiku0084/daily-commit.git
+  ```
+
+2. **commit-log.txt の確認**:
+  - 最新の自動コミットログが記録されています。
+
+3. **スケジュール変更**:
+  - `.github/workflows/daily-commit.yml`内の`cron`値を変更することで、スケジュールを調整できます。
+
+## ログファイル構成
+
+- `commit-log.txt`には以下のフォーマットでログが記録されます:
+  ```txt
+  Auto commit on 2025-01-10 08:00:00 JST
+  Auto commit on 2025-01-11 08:00:00 JST
+  ```
