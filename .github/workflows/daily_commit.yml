@@ -33,7 +33,7 @@ jobs:
     - name: Commit changes
       run: |
         git add commit-log.txt
-        git commit -m "Auto commit on $(date)" || echo "No changes to commit"
+        git commit -m "Auto commit on $(TZ='Asia/Tokyo' date)" || echo "No changes to commit"
 
     - name: Pull latest changes and rebase
       run: |
